@@ -10,4 +10,13 @@ def show_history():
             print(line.split())
 
     file.close()
-                
+
+def clear_history():
+    file = open(HISTORY_FILE, 'w')
+    file.close()
+    print("History Cleared.")
+
+def save_to_history(equation, result):
+    file = open(HISTORY_FILE, 'a')
+    file.write(equation + "=" + str(result) + "\n")
+    file.close()
