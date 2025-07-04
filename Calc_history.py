@@ -10,4 +10,8 @@ def show_history():
             print(line.split())
 
     file.close()
-                
+
+def clear_history():
+    file = open(HISTORY_FILE, 'w')
+    file.close()
+    print("History Cleared.")
