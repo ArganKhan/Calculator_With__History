@@ -16,7 +16,13 @@ def clear_history():
     file.close()
     print("History Cleared.")
 
+
 def save_to_history(equation, result):
     file = open(HISTORY_FILE, 'a')
     file.write(equation + "=" + str(result) + "\n")
     file.close()
+
+def Calculate(user_input):
+    
+
+    save_to_history(user_input, result) 
