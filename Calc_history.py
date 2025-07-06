@@ -51,3 +51,20 @@ def Calculate(user_input):
     print("Result:", result)   
 
     save_to_history(user_input, result) 
+
+def main():
+    print("---SIMPLE CALCULATOR (type history, clear or exit) = exit")
+    while True:
+        user_input = input("Enter calculation (+ - * /) or command (history, clear or exit)")
+        if user_input == "exit":
+            print("Goodbye")
+            break
+        elif user_input == "history":
+            show_history()
+        elif user_input == "clear":
+            clear_history()  
+        else:
+            Calculate(user_input)
+
+main()
+
