@@ -7,7 +7,7 @@ def show_history():
         print("NOT HISTORY FOUND")
     else:
         for line in reversed(lines):
-            print(line.split())
+            print(line.strip())
 
     file.close()
 
@@ -19,7 +19,7 @@ def clear_history():
 
 def save_to_history(equation, result):
     file = open(HISTORY_FILE, 'a')
-    file.write(equation + "=" + str(result) + "\n")
+    file.write(equation + " = " + str(result) + "\n")
     file.close()
 
 def Calculate(user_input):
@@ -34,14 +34,22 @@ def Calculate(user_input):
 
     if op == "+":
         result = num1 + num2
-    elif op == "-":    
+    elif op == "-":  
          result = num1 - num2
     elif op == "*":
          result = num1 * num2
     elif op == "/":
-          if num2 == "0":
+            if num2 == 0:
               print("Cannot divide by zero")
-          result = num1 / num2
+              return
+            result = num1 / num2
+    elif op == "**":
+            result = num1 ** num2
+    elif op == "%":
+            if num2 == 0:
+                print("Cannot perform modulus by zero.")
+                return
+            result = num1 % num2      
     else:
         print("Invalid operator. Use only + - * /.")
         return                
@@ -55,7 +63,7 @@ def Calculate(user_input):
 def main():
     print("---SIMPLE CALCULATOR (type history, clear or exit) = exit")
     while True:
-        user_input = input("Enter calculation (+ - * /) or command (history, clear or exit)")
+        user_input = input("Enter calculation (+ - * / ** %) or command (history, clear or exit) = ")
         if user_input == "exit":
             print("Goodbye")
             break
